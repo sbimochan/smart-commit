@@ -23,6 +23,12 @@ will produce default command
 
 ```git clone https://github.com/sbimochan/smart-commit.git```
 
-```alias gcommit="sh ~/bin/smart-commit/commit"```
+```cd smart-commit```
+
+```cp commit /usr/local/bin```
+
+```cd /usr/local/bin```
+
+```chmod +x commit```
 
 And restart the terminal
