@@ -8,9 +8,9 @@ DEFAULT_COMMIT="git commit -m \"$1\""
 
 if [ "$CURRENT_BRANCH" != "dev" ] && [ "$CURRENT_BRANCH" != "master" ] && [ "$CURRENT_BRANCH" != "qa" ] && [ "$CURRENT_BRANCH" != "uat" ]
 then
-  echo "Commiting with custom branch name"
+	echo "Commiting with branch name-> $CURRENT_BRANCH"
 	eval $COMMIT_WITH_BRANCH
 else
-  echo "Commiting with default branch"
+    echo "Commiting with default branch"
 	eval $DEFAULT_COMMIT
 fi
