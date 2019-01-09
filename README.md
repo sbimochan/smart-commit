@@ -19,16 +19,8 @@ will produce default command
  ```git commit -m "New feature"``` and execute it
 
 ### Installation
-Goto your desired location
+Run this command on terminal
 
-```git clone https://github.com/sbimochan/smart-commit.git```
-
-```cd smart-commit```
-
-```cp commit /usr/local/bin```
-
-```cd /usr/local/bin```
-
-```chmod +x commit```
+```curl https://raw.githubusercontent.com/sbimochan/smart-commit/master/commit -o /usr/local/bin/commit && chmod +x /usr/local/bin/commit```
 
 And restart the terminal
