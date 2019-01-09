@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 echo 'Running commit script'
 CURRENT_BRANCH_CMD="git rev-parse --abbrev-ref HEAD"
 CURRENT_BRANCH=$(eval $CURRENT_BRANCH_CMD)
