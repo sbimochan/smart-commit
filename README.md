@@ -4,7 +4,7 @@ Create commit with current branch name
 For example:
 If your current branch name is ```EF-803```
 
-```gcommit "New feature"```
+```commit "New feature"```
 
 will produce command
 
@@ -12,7 +12,7 @@ will produce command
 
 If your current branch is ```dev or uat or qa or master```
 
-```gcommit "New feature"```
+```commit "New feature"```
 
 will produce default command
 
