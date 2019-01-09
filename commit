@@ -6,7 +6,7 @@ CURRENT_BRANCH=$(eval $CURRENT_BRANCH_CMD)
 COMMIT_WITH_BRANCH="git commit -m \"$CURRENT_BRANCH: $1\""
 DEFAULT_COMMIT="git commit -m \"$1\""
 
-if [ "$CURRENT_BRANCH" != "dev" ] && [ "$CURRENT_BRANCH" != "master" ] && [ "$CURRENT_BRANCH" != "qa" ] && [ "$CURRENT_BRANCH" != "uat" ]
+if [ "$CURRENT_BRANCH" != "dev" ] && [ "$CURRENT_BRANCH" != "master" ] && [ "$CURRENT_BRANCH" != "qa" ] && [ "$CURRENT_BRANCH" != "uat" ] && [ "$CURRENT_BRANCH" != "staging" ]
 then
 	echo "Commiting with branch name-> $CURRENT_BRANCH"
 	eval $COMMIT_WITH_BRANCH
