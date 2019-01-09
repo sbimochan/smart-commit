@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+echo 'Running commit script'
+CURRENT_BRANCH_CMD="git rev-parse --abbrev-ref HEAD"
+CURRENT_BRANCH=$(eval $CURRENT_BRANCH_CMD)
+
+COMMIT_WITH_BRANCH="git commit -m \"$CURRENT_BRANCH: $1\""
+DEFAULT_COMMIT="git commit -m \"$1\""
+
+if [ "$CURRENT_BRANCH" != "dev" ] && [ "$CURRENT_BRANCH" != "master" ] && [ "$CURRENT_BRANCH" != "qa" ] && [ "$CURRENT_BRANCH" != "uat" ]
+then
+  echo "Commiting with custom branch name"
+	eval $COMMIT_WITH_BRANCH
+else
+  echo "Commiting with default branch"
+	eval $DEFAULT_COMMIT
+fi
