@@ -32,6 +32,6 @@ then
 	echo "Commiting with branch name-> $CURRENT_BRANCH"
 	eval $COMMIT_WITH_BRANCH
 else
-    	echo "Commiting with default branch"
+  echo "Commiting with default branch"
 	eval $DEFAULT_COMMIT
 fi
