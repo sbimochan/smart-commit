@@ -11,7 +11,6 @@ then
         IGNORED_BRANCHES=( ${IGNORED_BRANCHES[@]} ${BRANCHES[@]} )
 fi
 
-
 CURRENT_BRANCH_CMD="git rev-parse --abbrev-ref HEAD"
 CURRENT_BRANCH=$(eval $CURRENT_BRANCH_CMD)
 
@@ -28,12 +27,11 @@ do
 	fi
 done
 
-echo $IS_IGNORED
 if [ "$IS_IGNORED" == false ]
 then
 	echo "Commiting with branch name-> $CURRENT_BRANCH"
 	eval $COMMIT_WITH_BRANCH
 else
-    echo "Commiting with default branch"
+    	echo "Commiting with default branch"
 	eval $DEFAULT_COMMIT
 fi
