@@ -19,7 +19,7 @@ will produce default command
  ```git commit -m "New feature"``` and execute it
 
 ### Installation
-```cd ~```
+Goto your desired location
 
 ```git clone https://github.com/sbimochan/smart-commit.git```
 
