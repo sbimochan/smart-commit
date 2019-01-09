@@ -3,6 +3,15 @@ echo 'Running commit script'
 
 IGNORED_BRANCHES=("dev" "master" "qa" "uat" "staging")
 
+IGNORED_PATH="./.ignore"
+if [ -f "$IGNORED_PATH" ]
+then
+	CUSTOM_BRANCHES=$(cat "$IGNORED_PATH")
+	BRANCHES=( $CUSTOM_BRANCHES )
+        IGNORED_BRANCHES=( ${IGNORED_BRANCHES[@]} ${BRANCHES[@]} )
+fi
+
+
 CURRENT_BRANCH_CMD="git rev-parse --abbrev-ref HEAD"
 CURRENT_BRANCH=$(eval $CURRENT_BRANCH_CMD)
 
@@ -12,13 +21,14 @@ IS_IGNORED=false
 
 for branch in "${IGNORED_BRANCHES[@]}";
 do
-	if [ "$CURRENT_BRANCH" == ignore ]
+	if [ "$CURRENT_BRANCH" == $branch ]
 	then
 		IS_IGNORED=true
 		break
 	fi
 done
 
+echo $IS_IGNORED
 if [ "$IS_IGNORED" == false ]
 then
 	echo "Commiting with branch name-> $CURRENT_BRANCH"
