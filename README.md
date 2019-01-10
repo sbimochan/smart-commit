@@ -1,22 +1,34 @@
-## Smart commit
-Create commit with current branch name
+# Smart Commit
 
-For example:
-If your current branch name is ```EF-803```
+Create a commit prefixed with the current branch name.
 
-```commit "New feature"```
+## Installation
 
-will produce command
+Run this command on terminal.
 
- ```git commit -m "EF-803: New feature"``` and execute it
+```shell
+curl https://raw.githubusercontent.com/sbimochan/smart-commit/master/commit -o /usr/local/bin/commit && chmod +x /usr/local/bin/commit
+```
 
-If your current branch is ```dev or uat or qa or master```
+## Usage
 
-```commit "New feature"```
+* If your current branch name is `EF-803`
 
-will produce default command
+```shell
+$ commit "New feature"
 
- ```git commit -m "New feature"``` and execute it
+# translates to
+git commit -m "EF-803: New feature"
+```
+
+* If your current branch is either of `dev`, `uat`, `qa`, `staging` or `master`
+
+```shell
+$ commit "New feature"
+
+# translates to
+git commit -m "New feature"
+```
 
 You can create a file `.ignore` in your directory to add custom branches you want to ignore. Example `.ignore` file:
 
@@ -26,9 +38,6 @@ sprint-11
 new-feature
 ```
 
-### Installation
-Run this command on terminal
+## License
 
-```curl https://raw.githubusercontent.com/sbimochan/smart-commit/master/commit -o /usr/local/bin/commit && chmod +x /usr/local/bin/commit```
-
-And restart the terminal
+[MIT](LICENSE)

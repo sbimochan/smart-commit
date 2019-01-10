@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 echo 'Running commit script'
 
 IGNORED_BRANCHES=("dev" "master" "qa" "uat" "staging")
@@ -29,7 +30,7 @@ done
 
 if [ "$IS_IGNORED" == false ]
 then
-    echo "Commiting with branch name-> $CURRENT_BRANCH"
+    echo "Commiting with branch name -> $CURRENT_BRANCH"
     eval $COMMIT_WITH_BRANCH
 else
     echo "Commiting with default branch"
