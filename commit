@@ -2,16 +2,6 @@
 
 echo 'Running commit script'
 
-IGNORED_BRANCHES=("dev" "master" "qa" "uat" "staging")
-
-IGNORED_PATH="./.ignore"
-if [ -f "$IGNORED_PATH" ]
-then
-    CUSTOM_BRANCHES=$(cat "$IGNORED_PATH")
-    BRANCHES=( $CUSTOM_BRANCHES )
-    IGNORED_BRANCHES=( ${IGNORED_BRANCHES[@]} ${BRANCHES[@]} )
-fi
-
 IGNORED_BRANCHES=("dev" "master" "qa" "uat" "staging")	
 IGNORED_PATH="./.ignore"
 
