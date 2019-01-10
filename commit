@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
+
 echo 'Running commit script'
+
 CURRENT_BRANCH_CMD="git rev-parse --abbrev-ref HEAD"
 CURRENT_BRANCH=$(eval $CURRENT_BRANCH_CMD)
 
@@ -8,7 +10,7 @@ DEFAULT_COMMIT="git commit -m \"$1\""
 
 if [ "$CURRENT_BRANCH" != "dev" ] && [ "$CURRENT_BRANCH" != "master" ] && [ "$CURRENT_BRANCH" != "qa" ] && [ "$CURRENT_BRANCH" != "uat" ] && [ "$CURRENT_BRANCH" != "staging" ]
 then
-    echo "Commiting with branch name-> $CURRENT_BRANCH"
+    echo "Commiting with branch name -> $CURRENT_BRANCH"
     eval $COMMIT_WITH_BRANCH
 else
     echo "Commiting with default branch"
