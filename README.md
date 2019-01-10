@@ -1,26 +1,35 @@
-## Smart commit
-Create commit with current branch name
+# Smart Commit
 
-For example:
-If your current branch name is ```EF-803```
+Create a commit prefixed with the current branch name.
 
-```commit "New feature"```
+## Installation
 
-will produce command
+Run this command on terminal.
 
- ```git commit -m "EF-803: New feature"``` and execute it
+```shell
+curl https://raw.githubusercontent.com/sbimochan/smart-commit/master/commit -o /usr/local/bin/commit && chmod +x /usr/local/bin/commit
+```
 
-If your current branch is ```dev or uat or qa or master```
+## Usage
 
-```commit "New feature"```
+* If your current branch name is `EF-803`
 
-will produce default command
+```shell
+$ commit "New feature"
 
- ```git commit -m "New feature"``` and execute it
+# translates to
+git commit -m "EF-803: New feature"
+```
 
-### Installation
-Run this command on terminal
+* If your current branch is either of `dev`, `uat`, `qa`, `staging` or `master`
 
-```curl https://raw.githubusercontent.com/sbimochan/smart-commit/master/commit -o /usr/local/bin/commit && chmod +x /usr/local/bin/commit```
+```shell
+$ commit "New feature"
 
-And restart the terminal
+# translates to
+git commit -m "New feature"
+```
+
+## License
+
+[MIT](LICENSE)
