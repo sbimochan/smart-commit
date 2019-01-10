@@ -36,6 +36,7 @@ You can create a file `.ignore` in your directory to add custom branches you wan
 hot-fix
 sprint-11
 new-feature
+user-story-5
 ```
 
 ## License
