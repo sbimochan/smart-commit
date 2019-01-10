@@ -2,13 +2,44 @@
 
 echo 'Running commit script'
 
+IGNORED_BRANCHES=("dev" "master" "qa" "uat" "staging")
+
+IGNORED_PATH="./.ignore"
+if [ -f "$IGNORED_PATH" ]
+then
+    CUSTOM_BRANCHES=$(cat "$IGNORED_PATH")
+    BRANCHES=( $CUSTOM_BRANCHES )
+    IGNORED_BRANCHES=( ${IGNORED_BRANCHES[@]} ${BRANCHES[@]} )
+fi
+
+IGNORED_BRANCHES=("dev" "master" "qa" "uat" "staging")	
+IGNORED_PATH="./.ignore"
+
+if [ -f "$IGNORED_PATH" ]
+then
+    CUSTOM_BRANCHES=$(cat "$IGNORED_PATH")
+    BRANCHES=( $CUSTOM_BRANCHES )
+    IGNORED_BRANCHES=( ${IGNORED_BRANCHES[@]} ${BRANCHES[@]} )
+fi	
+
 CURRENT_BRANCH_CMD="git rev-parse --abbrev-ref HEAD"
 CURRENT_BRANCH=$(eval $CURRENT_BRANCH_CMD)
 
 COMMIT_WITH_BRANCH="git commit -m \"$CURRENT_BRANCH: $1\""
 DEFAULT_COMMIT="git commit -m \"$1\""
 
-if [ "$CURRENT_BRANCH" != "dev" ] && [ "$CURRENT_BRANCH" != "master" ] && [ "$CURRENT_BRANCH" != "qa" ] && [ "$CURRENT_BRANCH" != "uat" ] && [ "$CURRENT_BRANCH" != "staging" ]
+IS_IGNORED=false
+	
+for branch in "${IGNORED_BRANCHES[@]}";
+    do
+        if [ "$CURRENT_BRANCH" == $branch ]
+        then
+            IS_IGNORED=true
+	    break
+	fi
+done
+
+if [ "$IS_IGNORED" == false ]
 then
     echo "Commiting with branch name -> $CURRENT_BRANCH"
     eval $COMMIT_WITH_BRANCH
