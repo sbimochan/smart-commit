@@ -1,6 +1,6 @@
 # Smart Commit
 
-Create a commit prefixed with current branch name.
+Create a commit prefixed with the current branch name.
 
 ## Installation
 
@@ -16,18 +16,20 @@ curl https://raw.githubusercontent.com/sbimochan/smart-commit/master/commit -o /
 
 ```shell
 $ commit "New feature"
+
+# translates to
+git commit -m "EF-803: New feature"
 ```
-
-will translate to
-
- ```shell
- $ git commit -m "EF-803: New feature"
- ```
 
 * If your current branch is either of `dev`, `uat`, `qa`, `staging` or `master`
 
-```commit "New feature"```
+```shell
+$ commit "New feature"
 
-will execute without prefixing the branch name.
+# translates to
+git commit -m "New feature"
+```
 
- `git commit -m "New feature"`
+## License
+
+[MIT](LICENSE)
