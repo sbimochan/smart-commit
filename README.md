@@ -14,21 +14,21 @@ curl https://raw.githubusercontent.com/sbimochan/smart-commit/master/commit -o /
 
 * If your current branch name is `EF-803`
 
-```shell
-$ commit "New feature"
+  ```shell
+  $ commit "New feature"
 
-# translates to
-git commit -m "EF-803: New feature"
-```
+  # translates to
+  git commit -m "EF-803: New feature"
+  ```
 
 * If your current branch is either of `dev`, `uat`, `qa`, `staging` or `master`
 
-```shell
-$ commit "New feature"
+  ```shell
+  $ commit "New feature"
 
-# translates to
-git commit -m "New feature"
-```
+  # translates to
+  git commit -m "New feature"
+  ```
 
 ## Skip Branches
 
