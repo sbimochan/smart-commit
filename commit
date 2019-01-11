@@ -1,26 +1,35 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-echo 'Running commit script'
-
-IGNORED_BRANCHES=("dev" "master" "qa" "uat" "staging")	
+IS_IGNORED=false
 IGNORED_PATH="./.ignore"
+CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+IGNORED_BRANCHES=("dev" "master" "qa" "uat" "staging")
 
-if [ -f "$IGNORED_PATH" ]
+colorEcho(){
+    RED="\033[0;31m"
+    GREEN='\033[0;32m'
+    YELLOW='\033[1;33m'
+    NO_COLOR='\033[0m'
+    printf "${!1}${2} ${NO_COLOR}\n"
+}
+
+commitWithBranch() {
+    colorEcho "GREEN" "Commit translation: \"$CURRENT_BRANCH: $1\""
+    git commit -m "$CURRENT_BRANCH: $1"
+}
+
+if [[ -f "$IGNORED_PATH" ]]
 then
     CUSTOM_BRANCHES=$(cat "$IGNORED_PATH")
     BRANCHES=( $CUSTOM_BRANCHES )
     IGNORED_BRANCHES=( ${IGNORED_BRANCHES[@]} ${BRANCHES[@]} )
-fi	
+    colorEcho "YELLOW" ".ignore file found. Skimming off from .ignore file"
+else
+    colorEcho "YELLOW" ".ignore file not found"
+fi
 
-CURRENT_BRANCH_CMD="git rev-parse --abbrev-ref HEAD"
-CURRENT_BRANCH=$(eval $CURRENT_BRANCH_CMD)
-
-COMMIT_WITH_BRANCH="git commit -m \"$CURRENT_BRANCH: $1\""
-DEFAULT_COMMIT="git commit -m \"$1\""
-
-IS_IGNORED=false
-	
-for branch in "${IGNORED_BRANCHES[@]}";
+for branch in "${IGNORED_BRANCHES[@]}"
     do
         if [ "$CURRENT_BRANCH" == $branch ]
         then
@@ -29,11 +38,11 @@ for branch in "${IGNORED_BRANCHES[@]}";
 	fi
 done
 
+
 if [ "$IS_IGNORED" == false ]
 then
-    echo "Commiting with branch name -> $CURRENT_BRANCH"
-    eval $COMMIT_WITH_BRANCH
+    commitWithBranch $1
 else
-    echo "Commiting with default branch"
-    eval $DEFAULT_COMMIT
+    colorEcho "GREEN" "Commit translation: \"$1\""
+    git commit -m "$1"
 fi
