@@ -30,7 +30,11 @@ $ commit "New feature"
 git commit -m "New feature"
 ```
 
-You can create a `.ignore` file in your directory to add custom branches you want to ignore. A `.ignore` file looks like [this](https://github.com/sbimochan/smart-commit/blob/master/.ignore).
+## Skip Branches
+
+To add a custom branch that you would like to skip, create a `.smart-commit-ignore` file in your top level directory. A `.smart-commit-ignore` file looks like [this](https://github.com/sbimochan/smart-commit/blob/master/.smart-commit-ignore).
+
+Also, you might want to add `.smart-commit-ignore` to your `.gitignore` file.
 
 ## License
 
