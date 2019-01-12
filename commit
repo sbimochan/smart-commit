@@ -16,6 +16,7 @@ colorEcho(){
 
 commitWithBranch() {
     colorEcho "GREEN" "Commit translation: \"$CURRENT_BRANCH: $1\""
+    # Edit your config here
     git commit -m "$CURRENT_BRANCH: $1"
 }
 
@@ -24,9 +25,9 @@ then
     CUSTOM_BRANCHES=$(cat "$IGNORED_PATH")
     BRANCHES=( $CUSTOM_BRANCHES )
     IGNORED_BRANCHES=( ${IGNORED_BRANCHES[@]} ${BRANCHES[@]} )
-    colorEcho "YELLOW" "Excluding branches from .ignore file"
+    colorEcho "YELLOW" "Excluding branches from .ignore file."
 else
-    colorEcho "YELLOW" ".ignore file not found"
+    colorEcho "YELLOW" ".ignore file not found, excluding default branches."
 fi
 
 for branch in "${IGNORED_BRANCHES[@]}"
