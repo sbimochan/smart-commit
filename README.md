@@ -32,6 +32,12 @@ git commit -m "New feature"
 
 You can create a `.ignore` file in your directory to add custom branches you want to ignore. A `.ignore` file looks like [this](https://github.com/sbimochan/smart-commit/blob/master/.ignore).
 
+## Contributors
+
+1. [Aviskar KC](https://github.com/aviskarkc10)
+2. [Robus Gauli](https://github.com/RobusGauli)
+3. [Saugat Acharya](https://github.com/mesaugat)
+
 ## License
 
 [MIT](LICENSE)
