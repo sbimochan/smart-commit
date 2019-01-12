@@ -24,7 +24,7 @@ then
     CUSTOM_BRANCHES=$(cat "$IGNORED_PATH")
     BRANCHES=( $CUSTOM_BRANCHES )
     IGNORED_BRANCHES=( ${IGNORED_BRANCHES[@]} ${BRANCHES[@]} )
-    colorEcho "YELLOW" ".ignore file found. Skimming off from .ignore file"
+    colorEcho "YELLOW" "Excluding branches from .ignore file"
 else
     colorEcho "YELLOW" ".ignore file not found"
 fi
