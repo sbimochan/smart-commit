@@ -2,16 +2,13 @@
 
 echo 'Running commit script'
 
+GIT_ROOT_DIRECTORY=$(git rev-parse --show-toplevel)
 IGNORED_BRANCHES=("dev" "master" "qa" "uat" "staging")
-
-ROOT_DIRECTORY_CMD="git rev-parse --show-toplevel"
-GIT_ROOT_DIRECTORY=$(eval $ROOT_DIRECTORY_CMD)
-
 CUSTOM_IGNORED_PATH="$GIT_ROOT_DIRECTORY/.smart-commit-ignore"
 
-if [ -f "$IGNORED_PATH" ]
+if [ -f "$CUSTOM_IGNORED_PATH" ]
 then
-    CUSTOM_BRANCHES=$(cat "$IGNORED_PATH")
+    CUSTOM_BRANCHES=$(cat "$CUSTOM_IGNORED_PATH")
     BRANCHES=($CUSTOM_BRANCHES)
     IGNORED_BRANCHES=(${IGNORED_BRANCHES[@]} ${BRANCHES[@]})
 fi
