@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-echo 'Running commit script'
-
+CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 GIT_ROOT_DIRECTORY=$(git rev-parse --show-toplevel)
 IGNORED_BRANCHES=("dev" "master" "qa" "uat" "staging")
 CUSTOM_IGNORED_PATH="$GIT_ROOT_DIRECTORY/.smart-commit-ignore"
@@ -12,12 +12,6 @@ then
     BRANCHES=($CUSTOM_BRANCHES)
     IGNORED_BRANCHES=(${IGNORED_BRANCHES[@]} ${BRANCHES[@]})
 fi
-
-CURRENT_BRANCH_CMD="git rev-parse --abbrev-ref HEAD"
-CURRENT_BRANCH=$(eval $CURRENT_BRANCH_CMD)
-
-COMMIT_WITH_BRANCH="git commit -m \"$CURRENT_BRANCH: $1\""
-DEFAULT_COMMIT="git commit -m \"$1\""
 
 IS_IGNORED=false
 
@@ -30,10 +24,11 @@ for branch in "${IGNORED_BRANCHES[@]}";
 	fi
 done
 
+
 if [ "$IS_IGNORED" == false ]
 then
-    echo "Commiting with branch name -> $CURRENT_BRANCH"
-    eval $COMMIT_WITH_BRANCH
+    # Edit your config here
+    git commit -m "$CURRENT_BRANCH: $1"
 else
-    eval $DEFAULT_COMMIT
+    git commit -m "$1"
 fi
