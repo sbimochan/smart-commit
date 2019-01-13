@@ -3,8 +3,9 @@
 echo 'Running commit script'
 
 GIT_ROOT_DIRECTORY=$(git rev-parse --show-toplevel)
-IGNORED_BRANCHES=("dev" "master" "qa" "uat" "staging")
 CUSTOM_IGNORED_PATH="$GIT_ROOT_DIRECTORY/.smart-commit-ignore"
+
+IGNORED_BRANCHES=("dev" "master" "qa" "uat" "staging")
 
 if [ -f "$CUSTOM_IGNORED_PATH" ]
 then
@@ -13,8 +14,7 @@ then
     IGNORED_BRANCHES=(${IGNORED_BRANCHES[@]} ${BRANCHES[@]})
 fi
 
-CURRENT_BRANCH_CMD="git rev-parse --abbrev-ref HEAD"
-CURRENT_BRANCH=$(eval $CURRENT_BRANCH_CMD)
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 COMMIT_WITH_BRANCH="git commit -m \"$CURRENT_BRANCH: $1\""
 DEFAULT_COMMIT="git commit -m \"$1\""
