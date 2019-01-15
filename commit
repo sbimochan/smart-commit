@@ -8,7 +8,7 @@ if [ -z "${1:-}" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
     echo "  commit MESSAGE"
     echo
     echo "Example:"
-    echo "  commit \"Initial commit\""
+    echo "  commit \"Hello world!\""
     exit 1
 fi
 
@@ -32,7 +32,7 @@ for branch in "${IGNORED_BRANCHES[@]}"; do
 	fi
 done
 
-if [ "$IS_IGNORED" == false ];then
+if [ "$IS_IGNORED" == false ]; then
     # Edit your config here
     git commit -m "$CURRENT_BRANCH: $1"
 else
