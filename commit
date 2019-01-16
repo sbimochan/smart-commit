@@ -1,13 +1,23 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [ -z "${1:-}" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    echo "Create a commit prefixed with the current branch name."
+    echo
+    echo "Usage:"
+    echo "  commit MESSAGE"
+    echo
+    echo "Example:"
+    echo "  commit \"Hello world!\""
+    exit 1
+fi
+
 CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 GIT_ROOT_DIRECTORY=$(git rev-parse --show-toplevel)
 IGNORED_BRANCHES=("dev" "master" "qa" "uat" "staging")
 CUSTOM_IGNORED_PATH="$GIT_ROOT_DIRECTORY/.smart-commit-ignore"
 
-if [ -f "$CUSTOM_IGNORED_PATH" ]
-then
+if [ -f "$CUSTOM_IGNORED_PATH" ]; then
     CUSTOM_BRANCHES=$(cat "$CUSTOM_IGNORED_PATH")
     BRANCHES=($CUSTOM_BRANCHES)
     IGNORED_BRANCHES=(${IGNORED_BRANCHES[@]} ${BRANCHES[@]})
@@ -15,18 +25,14 @@ fi
 
 IS_IGNORED=false
 
-for branch in "${IGNORED_BRANCHES[@]}";
-    do
-        if [ "$CURRENT_BRANCH" == $branch ]
-        then
-            IS_IGNORED=true
-	    break
+for branch in "${IGNORED_BRANCHES[@]}"; do
+    if [ "$CURRENT_BRANCH" == $branch ]; then
+        IS_IGNORED=true
+        break
 	fi
 done
 
-
-if [ "$IS_IGNORED" == false ]
-then
+if [ "$IS_IGNORED" == false ]; then
     # Edit your config here
     git commit -m "$CURRENT_BRANCH: $1"
 else
