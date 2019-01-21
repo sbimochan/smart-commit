@@ -3,11 +3,8 @@
     <img style="width: 128px;" src="assets/logo.svg">
   </a>
   <br/>
+</div>
 
-</div>
-<div align="right" style="font-size:10px">
-  Logo by: <a href="http://sarojshahi.com.np/" target="_blank" style="font-size:12px">Saroj Shahi</a>
-</div>
 
 # Smart Commit
 
