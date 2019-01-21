@@ -3,6 +3,10 @@
     <img style="width: 128px;" src="assets/logo.svg">
   </a>
   <br/>
+
+</div>
+<div align="right" style="font-size:10px">
+  Logo by: <a href="http://sarojshahi.com.np/" target="_blank" style="font-size:12px">Saroj Shahi</a>
 </div>
 
 # Smart Commit
@@ -47,7 +51,8 @@ Additionally, you might want to add `.smart-commit-ignore` to your `.gitignore` 
 
 1. [Aviskar KC](https://github.com/aviskarkc10)
 2. [Robus Gauli](https://github.com/RobusGauli)
-3. [Saugat Acharya](https://github.com/mesaugat)
+3. [Saroj Shahi](http://sarojshahi.com.np/)
+4. [Saugat Acharya](https://github.com/mesaugat)
 
 ## License
 
