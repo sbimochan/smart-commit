@@ -1,3 +1,10 @@
+<div align="center">
+  <a href="https://github.com/sbimochan/smart-commit">
+    <img style="width: 128px;" src="assets/logo.svg">
+  </a>
+  <br/>
+</div>
+
 # Smart Commit
 
 Create a commit prefixed with the current branch name.
