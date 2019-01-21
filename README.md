@@ -1,3 +1,11 @@
+<div align="center">
+  <a href="https://github.com/sbimochan/smart-commit">
+    <img style="width: 128px;" src="assets/logo.svg">
+  </a>
+  <br/>
+</div>
+
+
 # Smart Commit
 
 Create a commit prefixed with the current branch name.
@@ -40,7 +48,8 @@ Additionally, you might want to add `.smart-commit-ignore` to your `.gitignore` 
 
 1. [Aviskar KC](https://github.com/aviskarkc10)
 2. [Robus Gauli](https://github.com/RobusGauli)
-3. [Saugat Acharya](https://github.com/mesaugat)
+3. [Saroj Shahi](http://sarojshahi.com.np/)
+4. [Saugat Acharya](https://github.com/mesaugat)
 
 ## License
 
