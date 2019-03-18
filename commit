@@ -12,7 +12,7 @@ then
     IGNORED_BRANCHES=( ${IGNORED_BRANCHES[@]} ${BRANCHES[@]} )
 fi	
 
-CURRENT_BRANCH_CMD="git rev-parse --abbrev-ref HEAD"
+CURRENT_BRANCH_CMD="git symbolic-ref --short HEAD"
 CURRENT_BRANCH=$(eval $CURRENT_BRANCH_CMD)
 
 COMMIT_WITH_BRANCH="git commit -m \"$CURRENT_BRANCH: $1\""
