@@ -12,7 +12,7 @@ if [ -z "${1:-}" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
     exit 1
 fi
 
-CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+CURRENT_BRANCH="$(git symbolic-ref --short HEAD)"
 GIT_ROOT_DIRECTORY=$(git rev-parse --show-toplevel)
 IGNORED_BRANCHES=("dev" "master" "qa" "uat" "staging")
 CUSTOM_IGNORED_PATH="$GIT_ROOT_DIRECTORY/.smart-commit-ignore"
