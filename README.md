@@ -4,6 +4,8 @@
 
 Create a commit prefixed with the current branch name.
 
+[Story](https://www.lftechnology.com/blog/git-workflow-smart-commit/) behind Smart Commit. :zap:
+
 ## Installation
 
 Run this command on terminal.
