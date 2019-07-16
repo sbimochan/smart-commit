@@ -34,7 +34,7 @@ done
 
 if [ "$IS_IGNORED" == false ]; then
     # Edit your config here
-    git commit -m "$CURRENT_BRANCH: $1"
+    git commit -m "$CURRENT_BRANCH: $1" $2
 else
-    git commit -m "$1"
+    git commit -m "$1" $2
 fi
