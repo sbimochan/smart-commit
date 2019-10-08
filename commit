@@ -2,11 +2,9 @@
 set -euo pipefail
 
 if [ -z "${1:-}" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-    echo "Create a commit prefixed with the current branch name."
-    echo
+    echo -e "Create a commit prefixed with the current branch name.\n"
     echo "Usage:"
-    echo "  commit MESSAGE"
-    echo
+    echo -e "  commit MESSAGE\n"
     echo "Example:"
     echo "  commit \"Hello world!\""
     exit 1
