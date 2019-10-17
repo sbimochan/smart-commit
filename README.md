@@ -34,6 +34,8 @@ sudo curl https://raw.githubusercontent.com/sbimochan/smart-commit/master/commit
   git commit -m "New feature"
   ```
 
+  ![Smart Commit Preview](assets/smart-commit-preview.gif)
+
 ## Skip Branches
 
 To add a custom branch that you would like to skip, create a `.smart-commit-ignore` file in your top level directory. A `.smart-commit-ignore` file looks like [this](https://github.com/sbimochan/smart-commit/blob/master/.smart-commit-ignore).
