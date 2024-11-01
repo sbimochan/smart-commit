@@ -42,12 +42,11 @@ To add a custom branch that you would like to skip, create a `.smart-commit-igno
 
 Additionally, you might want to add `.smart-commit-ignore` to your `.gitignore` file.
 
-## Contributors
+<a href="https://github.com/sbimochan/smart-commit/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=sbimochan/smart-commit" />
+</a>
 
-1. [Aviskar KC](https://github.com/aviskarkc10)
-2. [Robus Gauli](https://github.com/RobusGauli)
-3. [Saroj Shahi](http://sarojshahi.com.np/)
-4. [Saugat Acharya](https://github.com/mesaugat)
+Made with [contrib.rocks](https://contrib.rocks).
 
 ## License
 
