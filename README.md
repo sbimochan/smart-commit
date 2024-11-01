@@ -44,10 +44,9 @@ Additionally, you might want to add `.smart-commit-ignore` to your `.gitignore` 
 
 ## Contributors
 
-1. [Aviskar KC](https://github.com/aviskarkc10)
-2. [Robus Gauli](https://github.com/RobusGauli)
-3. [Saroj Shahi](http://sarojshahi.com.np/)
-4. [Saugat Acharya](https://github.com/mesaugat)
+<a href="https://github.com/sbimochan/smart-commit/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=sbimochan/smart-commit" />
+</a>
 
 ## License
 
