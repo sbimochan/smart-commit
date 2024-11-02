@@ -1,13 +1,39 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [ -z "${1:-}" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+# Function to display help message
+show_help() {
     echo -e "Create a commit prefixed with the current branch name.\n"
     echo "Usage:"
-    echo -e "  commit MESSAGE\n"
-    echo "Example:"
-    echo "  commit \"Hello world!\""
+    echo -e "  commit MESSAGE [options]\n"
+    echo -e "  commit -m MESSAGE [options]\n"
+    echo "Examples:"
+    echo "  commit \"Add new feature\"                # Commit with branch-prefixed message"
+    echo "  commit -m \"Fix bug\"                    # Commit with branch-prefixed message using -m"
+    echo "  commit \"Refactor code\" --no-verify     # Commit with branch-prefixed message, skip verification"
+    echo "  commit -m \"Update docs\" --no-verify    # Commit with branch-prefixed message using -m, skip verification"
     exit 1
+}
+
+# Check for help flag
+if [ -z "${1:-}" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    show_help
+fi
+
+# Initialize EXTRA_ARGS as an empty array
+EXTRA_ARGS=()
+
+# Determine if -m is used, and capture the message accordingly
+if [ "$1" = "-m" ]; then
+    if [ -z "${2:-}" ]; then
+        echo "Error: Commit message cannot be empty."
+        exit 1
+    fi
+    COMMIT_MESSAGE="$2"
+    EXTRA_ARGS=("${@:3}")
+else
+    COMMIT_MESSAGE="$1"
+    EXTRA_ARGS=("${@:2}")
 fi
 
 CURRENT_BRANCH="$(git symbolic-ref --short HEAD)"
@@ -15,24 +41,33 @@ GIT_ROOT_DIRECTORY=$(git rev-parse --show-toplevel)
 IGNORED_BRANCHES=("dev" "master" "main" "qa" "uat" "staging")
 CUSTOM_IGNORED_PATH="$GIT_ROOT_DIRECTORY/.smart-commit-ignore"
 
+# Add custom ignored branches if .smart-commit-ignore file exists
 if [ -f "$CUSTOM_IGNORED_PATH" ]; then
     CUSTOM_BRANCHES=$(cat "$CUSTOM_IGNORED_PATH")
     BRANCHES=($CUSTOM_BRANCHES)
     IGNORED_BRANCHES=(${IGNORED_BRANCHES[@]} ${BRANCHES[@]})
 fi
 
+# Check if the current branch is in the ignored branches list
 IS_IGNORED=false
-
 for branch in "${IGNORED_BRANCHES[@]}"; do
-    if [ "$CURRENT_BRANCH" == $branch ]; then
+    if [ "$CURRENT_BRANCH" == "$branch" ]; then
         IS_IGNORED=true
         break
-	fi
+    fi
 done
 
+# Build the commit command dynamically to avoid empty strings
 if [ "$IS_IGNORED" == false ]; then
-    # Edit your config here
-    git commit -m "$CURRENT_BRANCH: $1" ${@:2}
+    if [ "${#EXTRA_ARGS[@]}" -eq 0 ]; then
+        git commit -m "$CURRENT_BRANCH: $COMMIT_MESSAGE"
+    else
+        git commit -m "$CURRENT_BRANCH: $COMMIT_MESSAGE" "${EXTRA_ARGS[@]}"
+    fi
 else
-    git commit -m "$1" ${@:2}
+    if [ "${#EXTRA_ARGS[@]}" -eq 0 ]; then
+        git commit -m "$COMMIT_MESSAGE"
+    else
+        git commit -m "$COMMIT_MESSAGE" "${EXTRA_ARGS[@]}"
+    fi
 fi
