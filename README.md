@@ -53,7 +53,7 @@ sudo apt-get install bats  # For Debian-based systems
 brew install bats-core      # For macOS
 ```
 
-Run tests
+Run test
 
 ```
 bats tests.bats
