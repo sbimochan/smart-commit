@@ -22,9 +22,7 @@ jobs:
         sudo apt-get install -y git
 
     - name: Install Bats
-      run: |
-        git clone --depth=1 https://github.com/bats-core/bats-core.git /usr/local/bats
-        /usr/local/bats/install.sh /usr/local
+      run: sudo apt-get install bats
 
     - name: Run Bats tests
       run: |
