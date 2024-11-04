@@ -16,6 +16,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Set up Git configurations
+      run: |
+        git config --global user.name "CI User"
+        git config --global user.email "ci@example.com"
+
     - name: Set up Git
       run: |
         sudo apt-get update
