@@ -4,7 +4,10 @@
 
 Create a commit prefixed with the current branch name.
 
+[![Bats Tests](https://github.com/sbimochan/smart-commit/actions/workflows/bats-tests.yml/badge.svg)](https://github.com/sbimochan/smart-commit/actions/workflows/bats-tests.yml)
+
 [Story](https://www.lftechnology.com/blog/git-workflow-smart-commit/) behind Smart Commit. :zap:
+
 
 ## Installation
 
