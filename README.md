@@ -42,6 +42,23 @@ To add a custom branch that you would like to skip, create a `.smart-commit-igno
 
 Additionally, you might want to add `.smart-commit-ignore` to your `.gitignore` file.
 
+
+## Running Tests:
+
+Install Bats if not already installed
+
+```
+sudo apt-get install bats  # For Debian-based systems
+# or
+brew install bats-core      # For macOS
+```
+
+Run tests
+
+```
+bats tests.bats
+```
+
 ## Contributors
 
 1. [Aviskar KC](https://github.com/aviskarkc10)
