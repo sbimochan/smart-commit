@@ -11,7 +11,7 @@ Create a commit prefixed with the current branch name.
 Run this command on terminal.
 
 ```shell
-sudo curl https://raw.githubusercontent.com/sbimochan/smart-commit/master/commit -o /usr/local/bin/commit && sudo chmod +x /usr/local/bin/commit
+sudo curl https://raw.githubusercontent.com/sbimochan/smart-commit/main/commit -o /usr/local/bin/commit && sudo chmod +x /usr/local/bin/commit
 ```
 
 ## Usage
@@ -38,7 +38,7 @@ sudo curl https://raw.githubusercontent.com/sbimochan/smart-commit/master/commit
 
 ## Skip Branches
 
-To add a custom branch that you would like to skip, create a `.smart-commit-ignore` file in your top level directory. A `.smart-commit-ignore` file looks like [this](https://github.com/sbimochan/smart-commit/blob/master/.smart-commit-ignore).
+To add a custom branch that you would like to skip, create a `.smart-commit-ignore` file in your top level directory. A `.smart-commit-ignore` file looks like [this](https://github.com/sbimochan/smart-commit/blob/main/.smart-commit-ignore).
 
 Additionally, you might want to add `.smart-commit-ignore` to your `.gitignore` file.
 
