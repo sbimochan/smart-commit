@@ -1,0 +1,31 @@
+name: Bats Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Git
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y git
+
+    - name: Install Bats
+      run: |
+        git clone --depth=1 https://github.com/bats-core/bats-core.git /usr/local/bats
+        /usr/local/bats/install.sh /usr/local
+
+    - name: Run Bats tests
+      run: |
+        bats tests.bats
